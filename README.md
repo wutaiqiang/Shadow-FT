@@ -5,58 +5,100 @@ Official code for paper "Shadow-FT: Tuning Instruct via Base"
   <a href="TBD"><b>[🤗 HF Models]</b></a> •
   <a href="https://github.com/wutaiqiang/Shadow-FT"><b>[🐱 GitHub]</b></a>
 
-This repo contains the code for our paper: <a href="https://arxiv.org/abs/2411.06839" target="_blank">Shadow-FT: Tuning Instruct via Base</a> by <a href="https://wutaiqiang.github.io" target="_blank">Taiqiang Wu</a> <a href="https://rummyyang.github.io/" target="_blank">Runming Yang</a>, Jiayi Li, Pengfei Hu, Ngai Wong and Yujiu Yang.
+This repo contains the code for our paper: <a href="https://arxiv.org/abs/2411.06839" target="_blank">Shadow-FT: Tuning Instruct via Base</a> by <a href="https://wutaiqiang.github.io" target="_blank">Taiqiang Wu*</a> <a href="https://rummyyang.github.io/" target="_blank">Runming Yang*</a>, Jiayi Li, Pengfei Hu, Ngai Wong and Yujiu Yang.
+
+\* for equal contributions.
 
 There is an <a href="TBD" target="_blank"> explanation blog </a> for this paper (in Chinese).
 
 
-****************TBD**************
-
 
 ## Overview
 
-<img src="https://github.com/user-attachments/assets/277dcdf4-c599-41be-97f6-f56a678b4865" width="50%" />
+<img src="assets/framework.png" width="100%" />
+
+Observation:
+
+- directly tuning the INSTRUCT (i.e., instruction tuned) models often leads to marginal improvements and even performance degeneration. 
+
+- paired BASE models, the foundation for these INSTRUCT variants, contain highly similar weight values (i.e., less than 2% on average for Llama 3.1 8B). 
+
+$\Rightarrow$ we propose Shadow-FT framework to tune the INSTRUCT models by leveraging corresponding BASE models. The key insight is to fine-tune the BASE model, and then _directly_ graft the learned weight updates to the INSTRUCT model.
 
 
 ## Quick start
 
-Our code is basically built on  <a href="https://github.com/hiyouga/LLaMA-Factory" target="_blank">LLaMA-Factory</a>, which is a tremendous project and you can find everything you wonder there, thanks to their great framework and nice code!
+The training codes are basically built on  <a href="https://github.com/hiyouga/LLaMA-Factory" target="_blank">LLaMA-Factory</a>.
+For evaluation, we employ the <a href="https://github.com/open-compass/opencompass" target="_blank">OpenCompass</a> framework.
+Both are *Tremendous* projects and you can find nearly everything there, thanks to their great framework and beautiful code!
 
 
-### Environment:
-```
-git clone --depth 1 https://github.com/yang3121099/LLM-Neo.git
-cd LLM-Neo
+### Environment
+
+```bash
+git clone https://github.com/wutaiqiang/Shadow-FT
+cd Shadow-FT
 pip install -e ".[torch,metrics]"
+pip install importlib_metadata omegaconf
+pip install torch==2.6.0 transformers==4.52.1 torchvision  deepspeed -U
 ```
 
-### Basic usage:
+Please refer to [LLaMA Factory](https://github.com/hiyouga/LLaMA-Factory/blob/main/README_zh.md#%E5%AE%89%E8%A3%85-llama-factory) for more details.
+
+### Training data
+
+We select 2000 samples from [BAAI Infinity-Instruct](https://huggingface.co/datasets/BAAI/Infinity-Instruct/tree/main/Gen) and save it at `data/Shadow_2k.parquet`
+
+For the custom dataset, remember to add information at `data/dataset_info.json`.
+
+
+### For Train 
+
+Set `USE_LORA` `MODEL_DIR` `BASE_MODELS`, and then bash run.sh
+
+After that, you will get an automatically generated bash script for training, merging, and evaluating, such as:
+
+```text
+##### Auto-generated 2025-05-22 13:54:08 #####
+# Model     : Qwen2.5-14B
+# LoRA mode : true
+# Template  : qwen
+
+##### Environment #####
+export VLLM_WORKER_MULTIPROC_METHOD=spawn
+
+##### Training #####
+###### I  max=2000  lr=1e-5 ######
+llamafactory-cli train \
+  --model_name_or_path "${MODEL_ROOT}/Qwen2.5-14B-Instruct" \
+  --finetuning_type lora --lora_rank 128 \
+  --dataset "Shadow_2k" \
+  --output_dir "${OUTPUT_ROOT}/instruct_lora" ...
+
+##### LoRA delta‑merge #####
+llamafactory-cli export \
+  --base_model "${MODEL_ROOT}/Qwen2.5-14B-Instruct" \
+  --lora_dir   "${OUTPUT_ROOT}/delta" \
+  --output_dir "${OUTPUT_ROOT}/shadow_instruct"
+
+##### Evaluation list #####
+# ('short_name', 'model_path')
 ```
-python3 script_Neo.py
-bash run_train.sh
-```
-The `script_Neo.py` can generate all `4 training-strategy yaml` once time, you can use `--run` to choose from `[SFT, LoRA, KD, Neo]`, the settings will be generated to `examples/train_neo` and you can modify them manually.
+
+The use this bash file to start training!
+
+### For Evaluate
+
+Please refer to <a href="https://github.com/open-compass/opencompass" target="_blank">OpenCompass</a> for evaluation.
 
 
-### Advanced usage:
-```
-# for basic hypermeters
-python3 script_Neo.py --base_lr 1e-5 --epochs 3 --batch_size 16 --grad_accum 4 --max_samples 1000 
+### Future Plan
 
-# for LoRA and Neo
-python3 script_Neo.py --run lora neo --lora_rank 32 --base_model meta-llama/Meta-Llama-3-8B-Instruct
+-[ ] Introduce evaluation srcipts in this repo.
 
-# for KD and Neo
-python3 script_Neo.py --run kd neo --base_model meta-llama/Meta-Llama-3-8B-Instruct --teacher_model_name_or_path deepseek-ai/DeepSeek-R1-Distill-Llama-8B 
-```
+## License
 
-#### Learning Rate
-Follow the guideline propused by LLM-Neo paper, we set `lr' = 10 * lr` for LoRA and Neo automatically, please pay attention and it can be changed in your way.
-
-#### Knowledge Distillation
-LLM-Neo is the combination of LoRA and KD, while KD is not originally supported by LLaMA-Factory.
-
-We add the `--teacher_model` and `--kd_ratio` parameters in `src/llamafactory/hparams/finetuning_args` and `src/llamafactory/train/sft/trainer`, which is easy to extend to other methods when you DIY.
+We use the Apache‑2.0 license.  Please also comply with the licenses of any upstream models and datasets.
 
 
 ## ☕️ Citation
@@ -64,10 +106,12 @@ We add the `--teacher_model` and `--kd_ratio` parameters in `src/llamafactory/hp
 If you find this repository helpful, please consider citing our paper:
 
 ```
-@article{yang2024llm,
-  title={Llm-neo: Parameter efficient knowledge distillation for large language models},
-  author={Yang, Runming and Wu, Taiqiang and Wang, Jiahao and Hu, Pengfei and Wong, Ngai and Yang, Yujiu},
-  journal={arXiv preprint arXiv:2411.06839},
-  year={2024}
+@article{wu2025shadow,
+  title={Shadow-FT: Tuning Instruct via Base},
+  author={Wu, Taiqiang and Yang, Runming and Li, Jiayi and Hu, Pengfei and Wong, Ngai and Yang, Yujiu},
+  journal={arXiv preprint arXiv:2505.12716},
+  year={2025}
 }
 ```
+
+For any questions, please pull an issue or email at `takiwu@connect.hku.hk`

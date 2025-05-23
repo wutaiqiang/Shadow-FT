@@ -1,0 +1,157 @@
+[
+    {
+      "name": "Seed-Coder-8B",
+      "hf_base_path": "ByteDance-Seed/Seed-Coder-8B-Base",
+      "hf_instruct_path":"ByteDance-Seed/Seed-Coder-8B-Instruct"
+    },
+    {
+      "name": "Qwen2.5-32B",
+      "hf_base_path": "Qwen/Qwen2.5-32B",
+      "hf_instruct_path":"Qwen/Qwen2.5-32B-Chat"
+    },
+    {
+      "name": "Qwen2.5-14B",
+      "hf_base_path": "Qwen/Qwen2.5-14B",
+      "hf_instruct_path":"Qwen/Qwen2.5-14B-Instruct"
+    },
+    {
+        "name": "Qwen2.5-7B",
+        "hf_base_path": "Qwen/Qwen2.5-7B",
+        "hf_instruct_path":"Qwen/Qwen2.5-7B-Chat"
+    },
+    {
+      "name": "Qwen3-0.6B-Base",
+      "hf_base_path": "Qwen/Qwen3-0.6B-Base",
+      "hf_instruct_path":"Qwen/Qwen3-0.6B"
+    },
+    {
+      "name": "Qwen3-1.7B-Base",
+      "hf_base_path": "Qwen/Qwen3-1.7B-Base",
+      "hf_instruct_path":"Qwen/Qwen3-1.7B"
+    },
+    {
+      "name": "Qwen3-4B-Base",
+      "hf_base_path": "Qwen/Qwen3-4B-Base",
+      "hf_instruct_path":"Qwen/Qwen3-4B"
+    },
+    {
+      "name": "Qwen3-8B-Base",
+      "hf_base_path": "Qwen/Qwen3-8B-Base",
+      "hf_instruct_path":"Qwen/Qwen3-8B"
+    },
+    {
+      "name": "Qwen3-14B-Base",
+      "hf_base_path": "Qwen/Qwen3-14B-Base",
+      "hf_instruct_path":"Qwen/Qwen3-14B"
+    },
+    {
+      "name": "Qwen3-30B-A3B-Base",
+      "hf_base_path": "Qwen/Qwen3-30B-A3B-Base",
+      "hf_instruct_path":"Qwen/Qwen3-30B-A3B"
+    },
+    {
+      "name": "Falcon3-10B",
+      "hf_base_path": "tiiuae/falcon-10b",
+      "hf_instruct_path":"tiiuae/falcon-10b-instruct"
+    },
+    {
+      "name": "Falcon3-7B",
+      "hf_base_path": "tiiuae/falcon-7b",
+      "hf_instruct_path":"tiiuae/falcon-7b-instruct"
+    },
+    {
+      "name": "Falcon3-3B",
+      "hf_base_path": "tiiuae/falcon-3b",
+      "hf_instruct_path":"tiiuae/falcon-3b-instruct"
+    },
+    {
+      "name": "Falcon3-1B",
+      "hf_base_path": "tiiuae/falcon-1b",
+      "hf_instruct_path":"tiiuae/falcon-1b-instruct"
+    },
+    {
+    "name": "gemma-2-9b",
+    "hf_base_path": "google/gemma-2-9b",
+    "hf_instruct_path":"google/gemma-2-9b-it"
+    },
+    {
+    "name": "gemma-2-2b",
+    "hf_base_path": "google/gemma-2-2b",
+    "hf_instruct_path":"google/gemma-2-2b-it"
+    },
+    {
+    "name": "gemma-3-1b",
+    "hf_base_path": "google/gemma-3-1b",
+    "hf_instruct_path":"google/gemma-3-1b-it"
+    },
+    {
+    "name": "gemma-3-4b",
+    "hf_base_path": "google/gemma-3-4b",
+    "hf_instruct_path":"google/gemma-3-4b-it"
+    },
+    {
+    "name": "gemma-3-12b",
+    "hf_base_path": "google/gemma-3-12b",
+    "hf_instruct_path":"google/gemma-3-12b-it"
+    },
+    {
+    "name": "gemma-3-27b",
+    "hf_base_path": "google/gemma-3-27b",
+    "hf_instruct_path":"google/gemma-3-27b-it"
+    },
+    {
+      "name": "Mistral-7B",
+      "hf_base_path": "mistralai/Mistral-7B-v0.1",
+      "hf_instruct_path":"mistralai/Mistral-7B-Instruct-v0.1"
+    },
+    {
+      "name": "Yi-6B",
+      "hf_base_path": "01-ai/Yi-6B",
+      "hf_instruct_path":"01-ai/Yi-6B-Chat"
+    },
+    {
+      "name": "Yi-Coder-9B",
+      "hf_base_path": "01-ai/Yi-Coder-9B",
+      "hf_instruct_path":"01-ai/Yi-Coder-9B-Chat"
+    },
+    {
+      "name": "Yi-Coder-1.5B",
+      "hf_base_path": "01-ai/Yi-Coder-1.5B",
+      "hf_instruct_path":"01-ai/Yi-Coder-1.5B-Chat"
+    },
+    {
+      "name": "Baichuan2-7B",
+      "hf_base_path": "baichuan-inc/Baichuan2-7B",
+      "hf_instruct_path":"baichuan-inc/Baichuan2-7B-Chat"
+    },
+    {
+      "name": "internlm2-7b",
+      "hf_base_path": "internlm/internlm2-7b",
+      "hf_instruct_path":"internlm/internlm2-7b-chat"
+    },
+    {
+      "name": "internlm2-1_8b",
+      "hf_base_path": "internlm/internlm2-1_8b",
+      "hf_instruct_path":"internlm/internlm2-1_8b-chat"
+    },
+    {
+      "name": "internlm2_5-7b",
+      "hf_base_path": "internlm/internlm2_5-7b",
+      "hf_instruct_path":"internlm/internlm2_5-7b-chat"
+    },
+    {
+      "name": "internlm2_5-1_8b",
+      "hf_base_path": "internlm/internlm2_5-1_8b",
+      "hf_instruct_path":"internlm/internlm2_5-1_8b-chat"
+    },
+    {
+      "name": "internlm2_5-20b",
+      "hf_base_path": "internlm/internlm2_5-20b",
+      "hf_instruct_path":"internlm/internlm2_5-20b-chat"
+    },
+    {
+      "name": "GLM-4-32B-0414",
+      "hf_base_path": "THUDM/glm-4-32b",
+      "hf_instruct_path":"THUDM/glm-4-32b-chat"
+    }
+]

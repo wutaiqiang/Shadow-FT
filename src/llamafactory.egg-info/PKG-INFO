@@ -1,0 +1,232 @@
+Metadata-Version: 2.4
+Name: llamafactory
+Version: 0.9.3.dev0
+Summary: Unified Efficient Fine-Tuning of 100+ LLMs
+Home-page: https://github.com/hiyouga/LLaMA-Factory
+Author: hiyouga
+Author-email: hiyouga@buaa.edu.cn
+License: Apache 2.0 License
+Keywords: AI,LLM,GPT,ChatGPT,Llama,Transformer,DeepSeek,Pytorch
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.9.0
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: transformers!=4.46.*,!=4.47.*,!=4.48.0,!=4.52.0,<=4.52.1,>=4.45.0
+Requires-Dist: datasets<=3.6.0,>=2.16.0
+Requires-Dist: accelerate<=1.7.0,>=0.34.0
+Requires-Dist: peft<=0.15.2,>=0.14.0
+Requires-Dist: trl<=0.9.6,>=0.8.6
+Requires-Dist: tokenizers<=0.21.1,>=0.19.0
+Requires-Dist: gradio<=5.30.0,>=4.38.0
+Requires-Dist: scipy
+Requires-Dist: einops
+Requires-Dist: sentencepiece
+Requires-Dist: tiktoken
+Requires-Dist: protobuf
+Requires-Dist: uvicorn
+Requires-Dist: fastapi
+Requires-Dist: sse-starlette
+Requires-Dist: matplotlib>=3.7.0
+Requires-Dist: fire
+Requires-Dist: omegaconf
+Requires-Dist: packaging
+Requires-Dist: pyyaml
+Requires-Dist: numpy<2.0.0
+Requires-Dist: pydantic<=2.10.6
+Requires-Dist: pandas>=2.0.0
+Requires-Dist: av
+Requires-Dist: librosa
+Requires-Dist: tyro<0.9.0
+Provides-Extra: torch
+Requires-Dist: torch>=2.0.0; extra == "torch"
+Requires-Dist: torchvision>=0.15.0; extra == "torch"
+Provides-Extra: torch-npu
+Requires-Dist: torch==2.4.0; extra == "torch-npu"
+Requires-Dist: torch-npu==2.4.0.post2; extra == "torch-npu"
+Requires-Dist: decorator; extra == "torch-npu"
+Provides-Extra: metrics
+Requires-Dist: nltk; extra == "metrics"
+Requires-Dist: jieba; extra == "metrics"
+Requires-Dist: rouge-chinese; extra == "metrics"
+Provides-Extra: deepspeed
+Requires-Dist: deepspeed<=0.16.5,>=0.10.0; extra == "deepspeed"
+Provides-Extra: liger-kernel
+Requires-Dist: liger-kernel>=0.5.5; extra == "liger-kernel"
+Provides-Extra: bitsandbytes
+Requires-Dist: bitsandbytes>=0.39.0; extra == "bitsandbytes"
+Provides-Extra: hqq
+Requires-Dist: hqq; extra == "hqq"
+Provides-Extra: eetq
+Requires-Dist: eetq; extra == "eetq"
+Provides-Extra: gptq
+Requires-Dist: optimum>=1.24.0; extra == "gptq"
+Requires-Dist: gptqmodel>=2.0.0; extra == "gptq"
+Provides-Extra: aqlm
+Requires-Dist: aqlm[gpu]>=1.1.0; extra == "aqlm"
+Provides-Extra: vllm
+Requires-Dist: vllm<=0.8.5,>=0.4.3; extra == "vllm"
+Provides-Extra: sglang
+Requires-Dist: sglang[srt]>=0.4.5; extra == "sglang"
+Requires-Dist: transformers==4.51.1; extra == "sglang"
+Provides-Extra: galore
+Requires-Dist: galore-torch; extra == "galore"
+Provides-Extra: apollo
+Requires-Dist: apollo-torch; extra == "apollo"
+Provides-Extra: badam
+Requires-Dist: badam>=1.2.1; extra == "badam"
+Provides-Extra: adam-mini
+Requires-Dist: adam-mini; extra == "adam-mini"
+Provides-Extra: qwen
+Requires-Dist: transformers_stream_generator; extra == "qwen"
+Provides-Extra: minicpm-v
+Requires-Dist: soundfile; extra == "minicpm-v"
+Requires-Dist: torchvision; extra == "minicpm-v"
+Requires-Dist: torchaudio; extra == "minicpm-v"
+Requires-Dist: vector_quantize_pytorch; extra == "minicpm-v"
+Requires-Dist: vocos; extra == "minicpm-v"
+Requires-Dist: msgpack; extra == "minicpm-v"
+Requires-Dist: referencing; extra == "minicpm-v"
+Requires-Dist: jsonschema_specifications; extra == "minicpm-v"
+Requires-Dist: transformers==4.48.3; extra == "minicpm-v"
+Provides-Extra: modelscope
+Requires-Dist: modelscope; extra == "modelscope"
+Provides-Extra: openmind
+Requires-Dist: openmind; extra == "openmind"
+Provides-Extra: swanlab
+Requires-Dist: swanlab; extra == "swanlab"
+Provides-Extra: dev
+Requires-Dist: pre-commit; extra == "dev"
+Requires-Dist: ruff; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: build; extra == "dev"
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: license
+Dynamic: license-file
+Dynamic: provides-extra
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# Shadow-FT
+Official code for paper "Shadow-FT: Tuning Instruct via Base"
+
+  <a href="https://arxiv.org/pdf/2505.12716"><b>[📜 Paper]</b></a> •
+  <a href="TBD"><b>[🤗 HF Models]</b></a> •
+  <a href="https://github.com/wutaiqiang/Shadow-FT"><b>[🐱 GitHub]</b></a>
+
+This repo contains the code for our paper: <a href="https://arxiv.org/abs/2411.06839" target="_blank">Shadow-FT: Tuning Instruct via Base</a> by <a href="https://wutaiqiang.github.io" target="_blank">Taiqiang Wu*</a> <a href="https://rummyyang.github.io/" target="_blank">Runming Yang*</a>, Jiayi Li, Pengfei Hu, Ngai Wong and Yujiu Yang.
+
+\* for equal contributions.
+
+There is an <a href="TBD" target="_blank"> explanation blog </a> for this paper (in Chinese).
+
+
+
+## Overview
+
+<img src="assets/framework.png" width="100%" />
+
+Observation:
+
+- directly tuning the INSTRUCT (i.e., instruction tuned) models often leads to marginal improvements and even performance degeneration. 
+
+- paired BASE models, the foundation for these INSTRUCT variants, contain highly similar weight values (i.e., less than 2% on average for Llama 3.1 8B). 
+
+$\Rightarrow$ we propose Shadow-FT framework to tune the INSTRUCT models by leveraging corresponding BASE models. The key insight is to fine-tune the BASE model, and then _directly_ graft the learned weight updates to the INSTRUCT model.
+
+
+## Quick start
+
+The training codes are basically built on  <a href="https://github.com/hiyouga/LLaMA-Factory" target="_blank">LLaMA-Factory</a>.
+For evaluation, we employ the <a href="https://github.com/open-compass/opencompass" target="_blank">OpenCompass</a> framework.
+Both are *Tremendous* projects and you can find nearly everything there, thanks to their great framework and beautiful code!
+
+
+### Environment
+
+```bash
+git clone https://github.com/wutaiqiang/Shadow-FT
+cd Shadow-FT
+pip install -e ".[torch]" --no-build-isolation
+```
+
+Please refer to [LLaMA Factory](https://github.com/hiyouga/LLaMA-Factory/blob/main/README_zh.md#%E5%AE%89%E8%A3%85-llama-factory) for more details.
+
+### Training data
+
+We select 2000 samples from [BAAI Infinity-Instruct](https://huggingface.co/datasets/BAAI/Infinity-Instruct/tree/main/Gen) and save it at `data/Shadow_2k.parquet`
+
+For the custom dataset, remember to add information at `data/dataset_info.json`.
+
+
+### Generate Bash 
+
+Set `USE_LORA` `MODEL_DIR` `BASE_MODELS`, and then bash run.sh
+
+After that, you will get an automatically generated bash script for training, merging, and evaluating, such as:
+
+```text
+##### Auto-generated 2025-05-22 13:54:08 #####
+# Model     : Qwen2.5-14B
+# LoRA mode : true
+# Template  : qwen
+
+##### Environment #####
+export VLLM_WORKER_MULTIPROC_METHOD=spawn
+
+##### Training #####
+###### I  max=2000  lr=1e-5 ######
+llamafactory-cli train \
+  --model_name_or_path "${MODEL_ROOT}/Qwen2.5-14B-Instruct" \
+  --finetuning_type lora --lora_rank 128 \
+  --dataset "Shadow_2k" \
+  --output_dir "${OUTPUT_ROOT}/instruct_lora" ...
+
+##### LoRA delta‑merge #####
+llamafactory-cli export \
+  --base_model "${MODEL_ROOT}/Qwen2.5-14B-Instruct" \
+  --lora_dir   "${OUTPUT_ROOT}/delta" \
+  --output_dir "${OUTPUT_ROOT}/shadow_instruct"
+
+##### Evaluation list #####
+# ('short_name', 'model_path')
+```
+
+The use this bash file to start exploring!
+
+## License
+
+We use the Apache‑2.0 license.  Please also comply with the licenses of any upstream models and datasets.
+
+
+## ☕️ Citation
+
+If you find this repository helpful, please consider citing our paper:
+
+```
+@article{wu2025shadow,
+  title={Shadow-FT: Tuning Instruct via Base},
+  author={Wu, Taiqiang and Yang, Runming and Li, Jiayi and Hu, Pengfei and Wong, Ngai and Yang, Yujiu},
+  journal={arXiv preprint arXiv:2505.12716},
+  year={2025}
+}
+```
+
+For any questions, please pull an issue or email at `takiwu@connect.hku.hk`
