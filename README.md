@@ -35,6 +35,8 @@ Both are *Tremendous* projects and you can find nearly everything there, thanks 
 
 ### Environment
 
+The env for LLaMA-Factory is quite strict, please check the official repo for more details.
+
 ```bash
 git clone https://github.com/wutaiqiang/Shadow-FT
 cd Shadow-FT
@@ -55,6 +57,9 @@ For the custom dataset, remember to add information at `data/dataset_info.json`.
 ### For Train 
 
 Set `USE_LORA` `MODEL_DIR` `BASE_MODELS`, and then bash run.sh
+
+set MODEL_DIR='' to download the model from huggingface, rather than local file.
+
 
 After that, you will get an automatically generated bash script for training, merging, and evaluating, such as:
 
@@ -94,7 +99,7 @@ Please refer to <a href="https://github.com/open-compass/opencompass" target="_b
 
 ### Future Plan
 
--[ ] Introduce evaluation srcipts in this repo.
+[ ] Introduce evaluation srcipts in this repo.
 
 ## License
 
