@@ -1,9 +1,9 @@
 # Shadow-FT
 Official code for paper "Shadow-FT: Tuning Instruct via Base"
 
-  <a href="https://arxiv.org/pdf/2505.12716", target="_blank"><b>[📜 Paper]</b></a> •
-  <a href="https://huggingface.co/collections/taki555/shadow-ft-683288b49e1e5e1edcf03135", target="_blank"><b>[🤗 HF Models]</b></a> •
-  <a href="https://github.com/wutaiqiang/Shadow-FT", target="_blank"><b>[🐱 GitHub]</b></a>
+  <a href="https://arxiv.org/pdf/2505.12716"><b>[📜 Paper]</b></a> •
+  <a href="https://huggingface.co/collections/taki555/shadow-ft-683288b49e1e5e1edcf03135""><b>[🤗 HF Models]</b></a> •
+  <a href="https://github.com/wutaiqiang/Shadow-FT"><b>[🐱 GitHub]</b></a>
 
 This repo contains the code for our paper: <a href="https://arxiv.org/abs/2411.06839" target="_blank">Shadow-FT: Tuning Instruct via Base</a> by <a href="https://wutaiqiang.github.io" target="_blank">Taiqiang Wu*</a> <a href="https://rummyyang.github.io/" target="_blank">Runming Yang*</a>, Jiayi Li, Pengfei Hu, Ngai Wong and Yujiu Yang.
 
@@ -19,18 +19,18 @@ There is an <a href="TBD" target="_blank"> explanation blog </a> for this paper 
 
 Observation:
 
-- directly tuning the INSTRUCT (i.e., instruction tuned) models often leads to marginal improvements and even performance degeneration. 
+- Directly tuning the INSTRUCT (i.e., instruction tuned) models often leads to marginal improvements and even performance degeneration. 
 
-- paired BASE models, the foundation for these INSTRUCT variants, contain highly similar weight values (i.e., less than 2% on average for Llama 3.1 8B). 
+- Paired BASE models, the foundation for these INSTRUCT variants, contain highly similar weight values (i.e., less than 2% on average for Llama 3.1 8B). 
 
-$\Rightarrow$ we propose Shadow-FT framework to tune the INSTRUCT models by leveraging corresponding BASE models. The key insight is to fine-tune the BASE model, and then _directly_ graft the learned weight updates to the INSTRUCT model.
+$\Rightarrow$ We propose the Shadow-FT framework to tune the INSTRUCT models by leveraging the corresponding BASE models. The key insight is to fine-tune the BASE model, and then _directly_ graft the learned weight updates to the INSTRUCT model.
 
 
 ## Quick start
 
 The training codes are basically built on  <a href="https://github.com/hiyouga/LLaMA-Factory" target="_blank">LLaMA-Factory</a>.
 For evaluation, we employ the <a href="https://github.com/open-compass/opencompass" target="_blank">OpenCompass</a> framework.
-Both are *Tremendous* projects and you can find nearly everything there, thanks to their great framework and beautiful code!
+Both are *Tremendous* projects, and you can find nearly everything there, thanks to their great framework and beautiful code!
 
 
 ### Environment
@@ -58,7 +58,7 @@ For the custom dataset, remember to add information at `data/dataset_info.json`.
 
 Set `USE_LORA` `MODEL_DIR` `BASE_MODELS`, and then bash run.sh
 
-set MODEL_DIR='' to download the model from huggingface, rather than local file.
+set MODEL_DIR='' to download the model from Huggingface, rather than a local file.
 
 
 After that, you will get an automatically generated bash script for training, merging, and evaluating, such as:
@@ -90,16 +90,16 @@ llamafactory-cli export \
 # ('short_name', 'model_path')
 ```
 
-The use this bash file to start training!
+Use this bash file to start training!
 
-### For Evaluate
+### For Evaluation
 
 Please refer to <a href="https://github.com/open-compass/opencompass" target="_blank">OpenCompass</a> for evaluation.
 
 
 ### Future Plan
 
-[ ] Introduce evaluation srcipts in this repo.
+- [ ] Introduce evaluation scripts in this repo.
 
 ## License
 
