@@ -2,7 +2,7 @@
 Official code for paper "Shadow-FT: Tuning Instruct via Base"
 
   <a href="https://arxiv.org/pdf/2505.12716"><b>[📜 Paper]</b></a> •
-  <a href="TBD"><b>[🤗 HF Models]</b></a> •
+  <a href="https://huggingface.co/collections/taki555/shadow-ft-683288b49e1e5e1edcf03135"><b>[🤗 HF Models]</b></a> •
   <a href="https://github.com/wutaiqiang/Shadow-FT"><b>[🐱 GitHub]</b></a>
 
 This repo contains the code for our paper: <a href="https://arxiv.org/abs/2411.06839" target="_blank">Shadow-FT: Tuning Instruct via Base</a> by <a href="https://wutaiqiang.github.io" target="_blank">Taiqiang Wu*</a> <a href="https://rummyyang.github.io/" target="_blank">Runming Yang*</a>, Jiayi Li, Pengfei Hu, Ngai Wong and Yujiu Yang.
