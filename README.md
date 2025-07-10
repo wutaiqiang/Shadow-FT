@@ -9,7 +9,7 @@ This repo contains the code for our paper: <a href="https://arxiv.org/abs/2505.1
 
 \* for equal contributions.
 
-There is an <a href="TBD" target="_blank"> explanation blog </a> for this paper (in Chinese).
+There is an <a href="https://zhuanlan.zhihu.com/p/1922234702594539985" target="_blank"> explanation blog </a> for this paper (in Chinese).
 
 
 
