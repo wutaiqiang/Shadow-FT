@@ -3,13 +3,14 @@
 </p>
 
 # Shadow-FT
-Official code for paper "Shadow-FT: Tuning Instruct via Base"
+Official code for paper "Shadow-FT: Tuning Instruct Model via Training on Paired Base Model"
 
-  <a href="https://arxiv.org/pdf/2505.12716"><b>[📜 Paper]</b></a> •
+
+  <a href="https://arxiv.org/pdf/2505.12716v3"><b>[📜 Paper]</b></a> •
   <a href="https://huggingface.co/collections/taki555/shadow-ft-683288b49e1e5e1edcf03135"><b>[🤗 HF Models]</b></a> •
   <a href="https://github.com/wutaiqiang/Shadow-FT"><b>[🐱 GitHub]</b></a>
 
-This repo contains the code for our paper: <a href="https://arxiv.org/abs/2505.12716" target="_blank">Shadow-FT: Tuning Instruct via Base</a> by <a href="https://wutaiqiang.github.io" target="_blank">Taiqiang Wu*</a> <a href="https://rummyyang.github.io/" target="_blank">Runming Yang*</a>, Jiayi Li, Pengfei Hu, Ngai Wong and Yujiu Yang.
+This repo contains the code for our paper: <a href="https://arxiv.org/abs/2505.12716" target="_blank">Shadow-FT: Tuning Instruct via Base</a> by <a href="https://wutaiqiang.github.io" target="_blank">Taiqiang Wu*</a> <a href="https://rummyyang.github.io/" target="_blank">Runming Yang*</a>, Jiayi Li, Pengfei Hu, Yik-Chung Wu, Ngai Wong and Yujiu Yang.
 
 \* for equal contributions.
 
@@ -116,8 +117,8 @@ If you find this repository helpful, please consider citing our paper:
 
 ```
 @article{wu2025shadow,
-  title={Shadow-FT: Tuning Instruct via Base},
-  author={Wu, Taiqiang and Yang, Runming and Li, Jiayi and Hu, Pengfei and Wong, Ngai and Yang, Yujiu},
+  title={Shadow-FT: Tuning Instruct Model via Training on Paired Base Model},
+  author={Wu, Taiqiang and Yang, Runming and Li, Jiayi and Hu, Pengfei and Wu, Yik-Chung and Wong, Ngai and Yang, Yujiu},
   journal={arXiv preprint arXiv:2505.12716},
   year={2025}
 }
