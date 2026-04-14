@@ -59,6 +59,10 @@ We select 2000 samples from [BAAI Infinity-Instruct](https://huggingface.co/data
 For the custom dataset, remember to add information at `data/dataset_info.json`.
 
 
+### Similarity
+
+Use `sigma_v2.py` to get sigma values, such as `python3 sigma_v2.py --B Qwen3-8B-Base/ --I Qwen3-8B/` 
+
 ### For Train 
 
 Set `USE_LORA` `MODEL_DIR` `BASE_MODELS`, and then bash run.sh
@@ -99,12 +103,8 @@ Use this bash file to start training!
 
 ### For Evaluation
 
-Please refer to <a href="https://github.com/open-compass/opencompass" target="_blank">OpenCompass</a> for evaluation.
+We use the wonderful <a href="https://github.com/open-compass/opencompass" target="_blank">OpenCompass</a> for evaluation. Check [this](https://github.com/wutaiqiang/Shadow-FT?tab=readme-ov-file#for-evaluation) for details.
 
-
-### Future Plan
-
-- [ ] Introduce evaluation scripts in this repo.
 
 ## License
 
