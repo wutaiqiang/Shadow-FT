@@ -102,6 +102,62 @@ Use this bash file to start training!
 Please refer to <a href="https://github.com/open-compass/opencompass" target="_blank">OpenCompass</a> for evaluation.
 
 
+### Weight Similarity (σ)
+
+`src/shadow/weight_similarity.py` reproduces the relative gap ratio σ from Section 2.3 of the paper:
+
+$$\sigma(W_A, W_B) = \frac{\sum |W_A - W_B|}{\sum |W_A| + \sum |W_B|}$$
+
+Lower σ means the two checkpoints share more of their weight mass — which is the empirical
+foundation of Shadow-FT (a paired Base/Instruct share ≳98% of weight mass, so a delta
+trained on Base transfers cleanly to Instruct).
+
+The script iterates **one transformer layer at a time** by parsing
+`model.safetensors.index.json`, so it works for 70B+ checkpoints without loading the
+whole state dict.
+
+**Usage:**
+
+```bash
+python3 src/shadow/weight_similarity.py \
+    --B <path_to_base_model> \
+    --I <path_to_instruct_model>
+```
+
+Only three third-party packages are used: `numpy`, `torch`, `safetensors`
+(all already pulled in by the standard LLaMA-Factory install above).
+
+**Reference σ values (from our runs):**
+
+| Base (--B)                   | Instruct (--I)                   | σ      |
+|------------------------------|----------------------------------|--------|
+| `Qwen3-4B-Base`              | `Qwen3-4B-Instruct-2507`         | 0.0562 |
+| `Qwen3-4B-Base`              | `Qwen3-4B-Base-Ins`              | 0.0558 |
+| `Qwen3-4B-Base-Ins`          | `Qwen3-4B-Instruct-2507`         | 0.0057 |
+
+**Minimal end-to-end verification (from a clean machine):**
+
+```bash
+# 1) Clone the repo
+git clone https://github.com/yang3121099/Shadow-FT
+cd Shadow-FT
+
+# 2) Install only what this script needs
+pip install numpy torch safetensors "huggingface_hub[cli]"
+
+# 3) Download a paired Base / Instruct checkpoint (~8 GB each)
+huggingface-cli download Qwen/Qwen3-4B-Base         --local-dir ./Qwen3-4B-Base
+huggingface-cli download Qwen/Qwen3-4B-Instruct-2507 --local-dir ./Qwen3-4B-Instruct-2507
+
+# 4) Run the σ analysis — expected final line: "Average sigma ... ~ 0.0562"
+python3 src/shadow/weight_similarity.py \
+    --B ./Qwen3-4B-Base \
+    --I ./Qwen3-4B-Instruct-2507
+```
+
+If the printed average σ matches the reference value (±1e-3), the script is working correctly.
+
+
 ### Future Plan
 
 - [ ] Introduce evaluation scripts in this repo.
