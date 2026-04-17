@@ -139,7 +139,7 @@ Only three third-party packages are used: `numpy`, `torch`, `safetensors`
 
 ```bash
 # 1) Clone the repo
-git clone https://github.com/yang3121099/Shadow-FT
+git clone https://github.com/wutaiqiang/Shadow-FT
 cd Shadow-FT
 
 # 2) Install only what this script needs
