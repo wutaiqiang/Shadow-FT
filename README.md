@@ -59,9 +59,9 @@ We select 2000 samples from [BAAI Infinity-Instruct](https://huggingface.co/data
 For the custom dataset, remember to add information at `data/dataset_info.json`.
 
 
-### Similarity
+<!-- ### Similarity
 
-Use `sigma_v2.py` to get sigma values, such as `python3 sigma_v2.py --B Qwen3-8B-Base/ --I Qwen3-8B/` 
+Use `sigma_v2.py` to get sigma values, such as `python3 sigma_v2.py --B Qwen3-8B-Base/ --I Qwen3-8B/`  -->
 
 ### For Train 
 
