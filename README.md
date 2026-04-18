@@ -162,7 +162,7 @@ python3 src/shadow/weight_similarity.py \
 If the printed average σ matches the reference value (±1e-3), the script is working correctly.
 
 
-### Future Plan
+### Evaluation
 We use the wonderful <a href="https://github.com/open-compass/opencompass" target="_blank">OpenCompass</a> for evaluation. Check [this](https://github.com/wutaiqiang/Shadow-FT?tab=readme-ov-file#for-evaluation) for details.
 
 
