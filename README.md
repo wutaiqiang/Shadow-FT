@@ -131,6 +131,14 @@ python3 src/shadow/weight_similarity.py \
 Only three third-party packages are used: `numpy`, `torch`, `safetensors`
 (all already pulled in by the standard LLaMA-Factory install above).
 
+Also, you can use weight_similarity_multi.py for multi-process acceleration, such as
+```bash
+python3 src/shadow/weight_similarity_multi.py \
+    --B <path_to_base_model> \
+    --I <path_to_instruct_model> \
+    --workers 12
+```
+
 **Reference σ values (from our runs):**
 
 | Base (--B)                   | Instruct (--I)                   | σ      |
